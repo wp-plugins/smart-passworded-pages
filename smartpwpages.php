@@ -3,7 +3,7 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.0
+Version: 1.0.1
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
@@ -68,6 +68,8 @@ class smartPWPages {
 				'post_type' => 'page',
 				'post_status' => 'publish'
 			);
+			
+			if ( function_exists( 'pause_exclude_pages' ) ) pause_exclude_pages();
 
 			$myPages = get_pages( $args );
 
