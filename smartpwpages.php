@@ -3,7 +3,7 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.0.1
+Version: 1.1.0
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
@@ -25,6 +25,9 @@ Copyright 2012  Brian Layman  (email : plugins@thecodecave.com)
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+// constants
+define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days 
+
 class smartPWPages {
      function smartpwpages_shortcode( $atts ) {
 			global $post;
@@ -43,13 +46,19 @@ class smartPWPages {
      }
 
 	function pw_redirect( $perma, $password ) {
-		if ( empty( $wp_hasher ) ) {
+		global $wp_version;
+		$cookiePW = stripslashes( $_POST['post_password'] );
+		if (version_compare($wp_version, '3.4', '>=')) {
+			// version is 3.4 and higher has better security on the pw pages
 			require_once( ABSPATH . 'wp-includes/class-phpass.php' );
+			
 			// By default, use the portable hash from phpass
 			$wp_hasher = new PasswordHash(8, true);
-		}
+			$cookiePW = $wp_hasher->HashPassword( $cookiePW );
+		}		
+		
 		// 10 days
-		setcookie( 'wp-postpass_' . COOKIEHASH, stripslashes( $password ), time() + 864000, COOKIEPATH );
+		setcookie( 'wp-postpass_' . COOKIEHASH, stripslashes( $password ), time() + SECONDS_TO_STORE_PW, COOKIEPATH );
 		wp_safe_redirect( $perma );
 		exit();
 	}

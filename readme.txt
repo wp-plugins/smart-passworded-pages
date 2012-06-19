@@ -3,8 +3,8 @@ Contributors: BrianLayman
 Donate link:http://thecodecave.com/donate
 Tags: password,security,page,member,login,cms
 Requires at least: 2.5
-Tested up to: 3.3.2
-Stable tag: 1.0.1
+Tested up to: 3.4
+Stable tag: 1.1.0
 
 Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
 
@@ -41,4 +41,7 @@ This video describes the usage of the plugin:
  
 == Changelog ==
 1.0 Initial Release
+
 1.0.1 Added compatiblity with the exclude pages plugin
+
+1.1.0 Updated the plugin to include the security enhancements added in WordPress 3.4
