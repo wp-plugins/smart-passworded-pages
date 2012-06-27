@@ -40,8 +40,15 @@ This video describes the usage of the plugin:
  `[youtube http://www.youtube.com/watch?v=DTliSyBPBWI]`
  
 == Changelog ==
-1.0 Initial Release
+= 1.0 = 
+* Initial Release
 
-1.0.1 Added compatiblity with the exclude pages plugin
+= 1.0.1 =
+* Added compatiblity with the exclude pages plugin
 
-1.1.0 Updated the plugin to include the security enhancements added in WordPress 3.4
+= 1.1.0 =
+* Updated the plugin to include the security enhancements added in WordPress 3.4
+
+= 1.1.1 =
+* The version labeled 1.1.0 hadn't included my final fixes and did not work actually work with 3.4. 1.1.1 simply includes the code that was intended to be 1.1.0.
+* Updated the styling of the changelog section of the readme file to allow it to parse correctly on WordPress.org
