@@ -3,13 +3,13 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.1.3
+Version: 1.1.4
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
 Requires: 2.5
 
-Copyright 2013  Brian Layman  (email : plugins@thecodecave.com)
+Copyright 2014  Brian Layman  (email : plugins@thecodecave.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as 
@@ -25,10 +25,21 @@ Copyright 2013  Brian Layman  (email : plugins@thecodecave.com)
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-// constants
+/**
+ * Define Constants
+ */
 define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days 
 
-class smartPWPages {
+/**
+ * Smart Passworded Pages Class
+ * @copyright Copyright (c), Brian Layman
+ * @author Brian Layman <plugins@TheCodeCave.com>
+ */
+ class smartPWPages {
+	/**
+	 * Smart Passworded Pages
+	 * Embeds a form for password submission into a post via a shortcode.
+	 */
      function smartpwpages_shortcode( $atts ) {
 		global $post;
 		extract( shortcode_atts( array(
@@ -45,7 +56,11 @@ class smartPWPages {
 		return $result;
 	}
 
-	function pw_redirect( $perma, $password ) {
+	/**
+	 * Password Redirect
+	 * Decodes the password, stores it in a cookie and redirects the visitor to that page.
+	 */
+	 function pw_redirect( $perma, $password ) {
 		global $wp_version, $wp_hasher;
 
 		// Version 3.6 introduces a new function
@@ -73,6 +88,10 @@ class smartPWPages {
 		exit();
 	}
 	
+	/**
+	 * Process Form
+	 * Decodes the password submitted on a form, find a page that uses it and redirects the visitor to that page.
+	 */
 	function process_form() {
 		global $wp_hasher;
 		if ( isset( $_POST[ 'smartPassword' ] ) && isset( $_POST[ 'smartParent' ] ) && wp_verify_nonce( $_POST[ 'smartPWPage_nonce' ], smartPWPage ) ) {
@@ -124,6 +143,9 @@ class smartPWPages {
 	}
 }
 
+/**
+ * Intialize Plugin
+ */
 $smartPWPages = new smartPWPages();
 add_action( 'init', array( $smartPWPages, 'process_form' ) );
 add_shortcode( 'smartpwpages', array( $smartPWPages, 'smartpwpages_shortcode' ) );

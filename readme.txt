@@ -3,8 +3,8 @@ Contributors: BrianLayman
 Donate link: http://thecodecave.com/donate
 Tags: password,security,page,member,login,cms
 Requires at least: 2.5
-Tested up to: 3.6
-Stable tag: 1.1.3
+Tested up to: 3.8.1
+Stable tag: 1.1.4
 
 Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
 
@@ -19,6 +19,12 @@ To add the password field to a page, simply enter the short code
   
 If you wish to assign a unique label to the submit button or give the form a unique ID for CSS identification, the attributes in the following example can be used:  
 [smartpwpages label=\"Login\" ID=\"sppForm1\"]
+
+This plugin doesn't add the ability to add passwords to pages.  WordPress has that built in.  On the right hand side of the page editing screen in WordPress, you can change the visibility to Password protected and enter in a password. If you are unfamiliar with using passwords in WordPress, you might want to read this page first:  http://codex.wordpress.org/Using_Password_Protection
+
+This plugin does make the password handling smarter and enhances it so that you can enter one password on a parent page and gain access to all the children pages using that password.  If you don't know what children pages or sub-pages are, you might want to read about it here:  http://codex.wordpress.org/Pages#Creating_Pages
+
+You can find out more about the Smart Passworded Pages plugin here: http://thecodecave.com/smart-passworded-pages-plugin/
 
 == Installation ==
 
@@ -39,6 +45,8 @@ There is also the second demo page for the plugin:
 This video describes the usage of the plugin:
  `[youtube http://www.youtube.com/watch?v=DTliSyBPBWI]`
  
+ 3. On the right hand side of the page editing screen in WordPress, you can change the visibility to Password protected and enter in a password.
+
 == Changelog ==
 = 1.0 = 
 * Initial Release
@@ -60,3 +68,7 @@ This video describes the usage of the plugin:
 * Added 3.6 compatiblity
 * Improved internationalization
 * Added support for plugins that replace the default hashing protocol
+
+= 1.1.4 =
+* Updated header to 3.8.1 compatiblity
+* Improved documentation
