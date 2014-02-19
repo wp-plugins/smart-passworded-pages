@@ -70,6 +70,6 @@ This video describes the usage of the plugin:
 * Added support for plugins that replace the default hashing protocol
 
 = 1.1.4 =
-* Updated header to 3.8.1 compatiblity
+* Updated header to 3.8.1 compatibility
 * Improved documentation
-* NOTE: Released on the same day 1.1.3 was publicly checked in. This made 3.6+ compatiblity universally available.
+* NOTE: Released on the same day 1.1.3 was publicly checked in. This made 3.6+ compatibility universally available.
