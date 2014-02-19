@@ -45,7 +45,7 @@ There is also the second demo page for the plugin:
 This video describes the usage of the plugin:
  `[youtube http://www.youtube.com/watch?v=DTliSyBPBWI]`
  
- 3. On the right hand side of the page editing screen in WordPress, you can change the visibility to Password protected and enter in a password.
+3. On the right hand side of the page editing screen in WordPress, you can change the visibility to Password protected and enter in a password.
 
 == Changelog ==
 = 1.0 = 
@@ -72,3 +72,4 @@ This video describes the usage of the plugin:
 = 1.1.4 =
 * Updated header to 3.8.1 compatiblity
 * Improved documentation
+* NOTE: Released on the same day 1.1.3 was publicly checked in. This made 3.6+ compatiblity universally available.
