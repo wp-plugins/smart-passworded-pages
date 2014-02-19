@@ -1,10 +1,10 @@
 === Smart Passworded Pages ===
 Contributors: BrianLayman 
-Donate link:http://thecodecave.com/donate
+Donate link: http://thecodecave.com/donate
 Tags: password,security,page,member,login,cms
 Requires at least: 2.5
-Tested up to: 3.4
-Stable tag: 1.1.2
+Tested up to: 3.6
+Stable tag: 1.1.3
 
 Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
 
@@ -55,3 +55,8 @@ This video describes the usage of the plugin:
 
 = 1.1.2 =
 * Tweeked the Exclude Pages plugin compatibilty
+
+= 1.1.3 =
+* Added 3.6 compatiblity
+* Improved internationalization
+* Added support for plugins that replace the default hashing protocol
