@@ -3,7 +3,7 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.1.4
+Version: 1.1.5
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
@@ -47,7 +47,7 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 			'ID' => 'smartPWLogin',
 		), $atts ) );
 		$result =  '<form ID="' . $ID . '" method="post" action="' . get_permalink() . '" >' . PHP_EOL;
-		if ( isset( $_GET['wrongpw'] ) ) $result .= '<p id="smartPWError">' . __e( 'You\'ve entered an invalid password.</p>', 'smartpwpages' ) . PHP_EOL;
+		if ( isset( $_GET['wrongpw'] ) ) $result .= '<p id="smartPWError">' . __( 'You\'ve entered an invalid password.</p>', 'smartpwpages' ) . PHP_EOL;
 		$result .= '	<input class="requiredField" type="password" name="smartPassword" id="smartPassword" value=""/>' . PHP_EOL;
 		$result .= '	<input type="hidden" name="smartParent" value="' .  $post->ID . '" />' . PHP_EOL;
 		$result .= '	<input type="hidden" name="smartPWPage_nonce" value="' . wp_create_nonce( smartPWPage ).'" />' . PHP_EOL;
