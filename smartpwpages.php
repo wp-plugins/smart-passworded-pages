@@ -3,7 +3,7 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.1.6
+Version: 1.1.7
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
@@ -130,7 +130,8 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 			}
 
 			foreach( $myPages as $page ) {
-				if ( ( $page->post_password == $postPassword ) || ( !empty( $wp_hasher ) && $wp_hasher->CheckPassword( $post->post_password, $postPassword ) ) ) {
+				if ( ( $page->post_password == $postPassword ) || ( !empty( $wp_hasher ) && 
+						$wp_hasher->CheckPassword( $page->post_password, $postPassword ) ) ) {
 					$permalink = get_permalink( $page->ID );
 					$this->pw_redirect( $permalink, $postPassword );
 				}
