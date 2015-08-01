@@ -3,13 +3,13 @@
 Plugin Name: Smart Passworded Pages
 Plugin URI: http://thecodecave.com/plugins/smart-passworded-pages-plugin/
 Description: Allows a central login page for password protected child pages. Enter a password and you are taken to the newest child page with a matching password.
-Version: 1.1.7
+Version: 2.0.0
 Author: Brian Layman
 Author URI: http://eHermitsInc.com/
 License: GPL2
 Requires: 2.5
 
-Copyright 2014  Brian Layman  (email : plugins@thecodecave.com)
+Copyright 2015  Brian Layman  (email : plugins@thecodecave.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as 
@@ -42,16 +42,19 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 	 */
      function smartpwpages_shortcode( $atts ) {
 		global $post;
+
 		extract( shortcode_atts( array(
 			'label' => __( 'Enter', 'smartpwpages' ),
 			'ID' => 'smartPWLogin',
+			'parent' => $post->ID,
 		), $atts ) );
-		$result =  '<form ID="' . $ID . '" method="post" action="' . get_permalink() . '" >' . PHP_EOL;
+
+		$result =  '<form ID="' . esc_attr( $ID ) . '" method="post" action="' . esc_url( get_permalink() ) . '" >' . PHP_EOL;
 		if ( isset( $_GET['wrongpw'] ) ) $result .= '<p id="smartPWError">' . __( 'You\'ve entered an invalid password.</p>', 'smartpwpages' ) . PHP_EOL;
 		$result .= '	<input class="requiredField" type="password" name="smartPassword" id="smartPassword" value=""/>' . PHP_EOL;
-		$result .= '	<input type="hidden" name="smartParent" value="' .  $post->ID . '" />' . PHP_EOL;
+		$result .= '	<input type="hidden" name="smartParent" value="' .  (int) $parent . '" />' . PHP_EOL;
 		$result .= '	<input type="hidden" name="smartPWPage_nonce" value="' . wp_create_nonce( 'smartPWPage' ).'" />' . PHP_EOL;
-		$result .= '	<input type="submit" value="' . $label . '" />' . PHP_EOL;
+		$result .= '	<input type="submit" value="' . esc_attr( $label ). '" />' . PHP_EOL;
 		$result .= '</form>' . PHP_EOL;
 		return $result;
 	}
@@ -82,9 +85,14 @@ define( 'SECONDS_TO_STORE_PW', 864000); // 864000 = 10 Days
 			$cookiePW = $wp_hasher->HashPassword( $cookiePW );
 		}		
 		
+		$secure = ( 'https' === parse_url( home_url(), PHP_URL_SCHEME ) );
+		
 		// Store password for the length in the constant
-		setcookie( 'wp-postpass_' . COOKIEHASH, $cookiePW, time() + SECONDS_TO_STORE_PW, COOKIEPATH );
+		setcookie( 'wp-postpass_' . COOKIEHASH, $cookiePW, time() + SECONDS_TO_STORE_PW, COOKIEPATH, COOKIE_DOMAIN, $secure );
 		wp_safe_redirect( $perma );
+		
+		
+
 		exit();
 	}
 	
