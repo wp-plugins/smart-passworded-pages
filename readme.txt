@@ -86,6 +86,7 @@ View Team Notes:
 Of course! You can even use the ID parameter on the short code change the ID of each entry form you use and make custom CSS for each. 
 
 Here is an example of some CSS that makes the entry field, button and password error message all really ugly...
+(!! NOTE: There are slashes in the following text to make it appear correctly online. Do not include the slashes (\) in your css file !!)
 
 p#smartPWError {
     border: 4px solid red;
@@ -96,7 +97,7 @@ p#smartPWError {
 }
 
 
-#smartPWLogin input[type=\"submit\"] {
+\#smartPWLogin input[type=\"submit\"] {
     background-color: coral;
     color: navy;
     font-size: large;
